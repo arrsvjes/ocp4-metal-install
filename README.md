@@ -415,13 +415,13 @@
 1. Create an install directory
 
    ```bash
-   mkdir ~/ocp-install
+   mkdir -v ~/ocp-install
    ```
 
 1. Copy the install-config.yaml included in the clones repository to the install directory
 
    ```bash
-   cp ~/ocp4-metal-install/install-config.yaml ~/ocp-install
+   cp -v ~/ocp4-metal-install/install-config.yaml ~/ocp-install
    ```
 
 1. Update the install-config.yaml with your own pull-secret and ssh key.
@@ -452,13 +452,13 @@
 1. Create a hosting directory to serve the configuration files for the OpenShift booting process
 
    ```bash
-   mkdir /var/www/html/ocp4
+   mkdir -v /var/www/html/ocp4
    ```
 
 1. Copy all generated install files to the new web server directory
 
    ```bash
-   cp -R ~/ocp-install/* /var/www/html/ocp4
+   cp -Rv ~/ocp-install/* /var/www/html/ocp4
    ```
 
 1. Move the Core OS image to the web server directory (later you need to type this path multiple times so it is a good idea to shorten the name)
@@ -470,9 +470,9 @@
 1. Change ownership and permissions of the web server directory
 
    ```bash
-   chcon -R -t httpd_sys_content_t /var/www/html/ocp4/
-   chown -R apache: /var/www/html/ocp4/
-   chmod 755 /var/www/html/ocp4/
+   chcon -Rv -t httpd_sys_content_t /var/www/html/ocp4/
+   chown -Rv apache: /var/www/html/ocp4/
+   chmod -v 755 /var/www/html/ocp4/
    ```
 
 1. Confirm you can see all files added to the `/var/www/html/ocp4/` dir through Apache
